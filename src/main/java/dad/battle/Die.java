@@ -5,7 +5,7 @@ import java.util.Random;
 public enum Die {
 
 	D4(4), D6(6), D8(8), D10(10), D12(12), D20(20);
-	
+
 	private int numberOfFaces;
 	private Random randomizer;
 
@@ -16,6 +16,15 @@ public enum Die {
 
 	public int roll() {
 		return randomizer.nextInt(numberOfFaces) + 1;
+	}
+
+	public static Die get(int numberOfFaces) {
+		for (Die d : Die.values()) {
+			if (d.numberOfFaces == numberOfFaces) {
+				return d;
+			}
+		}
+		return null;
 	}
 
 	public int getNumberOfFaces() {

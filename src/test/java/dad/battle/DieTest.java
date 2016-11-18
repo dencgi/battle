@@ -66,5 +66,12 @@ public class DieTest {
 		assertEquals("Le nombre de face n'est pas correct", D12, Die.D12.getNumberOfFaces());
 		assertEquals("Le nombre de face n'est pas correct", D20, Die.D20.getNumberOfFaces());
 	}
+	
+	@Test
+	public void testFabrique() {
+		assertEquals("Le nombre de face n'est pas de 6", 6, Die.get(6).getNumberOfFaces());
+		assertEquals("Le nombre de face n'est pas de 12", 12, Die.get(12).getNumberOfFaces());
+		assertEquals("Le nombre de face n'est pas de 20", 20, Die.get(20).getNumberOfFaces());
+	}
 
 }
