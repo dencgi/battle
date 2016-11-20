@@ -80,10 +80,6 @@ public class Character {
 		return attributes;
 	}
 
-	public void setAttributes(Attributes attributes) {
-		this.attributes = attributes;
-	}
-
 	public int getStrength() {
 		return attributes.getStrength();
 	}
@@ -118,10 +114,6 @@ public class Character {
 
 	public int getLevel() {
 		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
 	}
 
 	public Classs getClasss() {
