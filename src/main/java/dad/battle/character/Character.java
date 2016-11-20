@@ -1,17 +1,10 @@
 package dad.battle.character;
 
-import dad.battle.die.Dice;
-
 public class Character {
 
 	private static final int STARTING_LEVEL = 1;
 	private String name;
-	private int strength;
-	private int dexterity;
-	private int constitution;
-	private int intelligence;
-	private int wisdom;
-	private int charisma;
+	private Attributes attributes;
 	private int hitPoints;
 	private int level;
 	private Classs classs;
@@ -19,15 +12,8 @@ public class Character {
 	public Character(String name) {
 		super();
 		this.name = name;
-		Dice abilityDice = new Dice("3d6");
-		strength = abilityDice.roll();
-		dexterity = abilityDice.roll();
-		constitution = abilityDice.roll();
-		intelligence = abilityDice.roll();
-		wisdom = abilityDice.roll();
-		charisma = abilityDice.roll();
+		this.attributes = new Attributes();
 		level = STARTING_LEVEL;
-		classs = Classs.FIGHTER;
 	}
 
 	public String getName() {
@@ -38,52 +24,60 @@ public class Character {
 		this.name = name;
 	}
 
+	public Attributes getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(Attributes attributes) {
+		this.attributes = attributes;
+	}
+
 	public int getStrength() {
-		return strength;
+		return attributes.getStrength();
 	}
 
 	public void setStrength(int strength) {
-		this.strength = strength;
+		attributes.setStrength(strength);
 	}
 
 	public int getDexterity() {
-		return dexterity;
+		return attributes.getDexterity();
 	}
 
 	public void setDexterity(int dexterity) {
-		this.dexterity = dexterity;
+		attributes.setDexterity(dexterity);
 	}
 
 	public int getConstitution() {
-		return constitution;
+		return attributes.getConstitution();
 	}
 
 	public void setConstitution(int constitution) {
-		this.constitution = constitution;
+		attributes.setConstitution(constitution);
 	}
 
 	public int getIntelligence() {
-		return intelligence;
+		return attributes.getIntelligence();
 	}
 
 	public void setIntelligence(int intelligence) {
-		this.intelligence = intelligence;
+		attributes.setIntelligence(intelligence);
 	}
 
 	public int getWisdom() {
-		return wisdom;
+		return attributes.getWisdom();
 	}
 
 	public void setWisdom(int wisdom) {
-		this.wisdom = wisdom;
+		attributes.setWisdom(wisdom);
 	}
 
 	public int getCharisma() {
-		return charisma;
+		return attributes.getCharisma();
 	}
 
 	public void setCharisma(int charisma) {
-		this.charisma = charisma;
+		attributes.setCharisma(charisma);
 	}
 
 	public int getHitPoints() {
