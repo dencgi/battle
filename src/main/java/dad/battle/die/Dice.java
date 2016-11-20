@@ -1,4 +1,4 @@
-package dad.battle;
+package dad.battle.die;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Dice {
 	private List<Die> handOfDice = new ArrayList<>();
 	private int modifier = 0;
 	private static final Pattern HAND_PATTERN = Pattern.compile("^\\d+d\\d+(\\+\\d+d\\d+)*([+-]\\d+)?$");
-	private static final Pattern GROUP_PATTERN = Pattern.compile("(?<numberOfDice>\\d+)d(?<numberOfFaces>\\d+)");
+	private static final Pattern DICE_PATTERN = Pattern.compile("(?<numberOfDice>\\d+)d(?<numberOfSides>\\d+)");
 	private static final Pattern MODIFIER_PATTERN = Pattern.compile("(?<modifier>[+-]\\d+)$");
 
 	public Dice(String hand) {
@@ -21,13 +21,13 @@ public class Dice {
 		}
 
 		// Récupération des groupes de dés.
-		Matcher groupMatcher = GROUP_PATTERN.matcher(hand);
-		while (groupMatcher.find()) {
-			int numberOfDice = Integer.parseInt(groupMatcher.group("numberOfDice"));
-			int numberOfFaces = Integer.parseInt(groupMatcher.group("numberOfFaces"));
+		Matcher diceMatcher = DICE_PATTERN.matcher(hand);
+		while (diceMatcher.find()) {
+			int numberOfDice = Integer.parseInt(diceMatcher.group("numberOfDice"));
+			int numberOfSides = Integer.parseInt(diceMatcher.group("numberOfSides"));
 
 			for (int i = 0; i < numberOfDice; ++i) {
-				handOfDice.add(Die.get(numberOfFaces));
+				handOfDice.add(Die.get(numberOfSides));
 			}
 		}
 		

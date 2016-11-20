@@ -1,4 +1,4 @@
-package dad.battle;
+package dad.battle.die;
 
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
+
+import dad.battle.die.Dice;
 
 public class DiceTest {
 
