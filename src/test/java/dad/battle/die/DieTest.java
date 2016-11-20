@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 import java.util.HashSet;
@@ -74,6 +75,7 @@ public class DieTest {
 		assertEquals("Le nombre de face n'est pas de 6", 6, Die.get(6).getNumberOfSides());
 		assertEquals("Le nombre de face n'est pas de 12", 12, Die.get(12).getNumberOfSides());
 		assertEquals("Le nombre de face n'est pas de 20", 20, Die.get(20).getNumberOfSides());
+		assertNull("Il y a un dé", Die.get(15));
 	}
 
 }

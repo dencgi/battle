@@ -3,6 +3,9 @@ package dad.battle.character;
 public class Character {
 
 	private static final int STARTING_LEVEL = 1;
+	private static final int DEATH_HIT_POINTS = -10;
+	private static final int DISABLED_HIT_POINTS = 0;
+
 	private String name;
 	private Attributes attributes;
 	private int hitPoints;
@@ -14,6 +17,23 @@ public class Character {
 		this.name = name;
 		this.attributes = new Attributes();
 		level = STARTING_LEVEL;
+		hitPoints = DEATH_HIT_POINTS;
+	}
+
+	public boolean isDead() {
+		return hitPoints <= DEATH_HIT_POINTS;
+	}
+
+	public boolean isDying() {
+		return hitPoints > DEATH_HIT_POINTS && hitPoints < DISABLED_HIT_POINTS;
+	}
+
+	public boolean isDisabled() {
+		return hitPoints == DISABLED_HIT_POINTS;
+	}
+
+	public boolean isAble() {
+		return hitPoints > DISABLED_HIT_POINTS;
 	}
 
 	public String getName() {
@@ -36,48 +56,24 @@ public class Character {
 		return attributes.getStrength();
 	}
 
-	public void setStrength(int strength) {
-		attributes.setStrength(strength);
-	}
-
 	public int getDexterity() {
 		return attributes.getDexterity();
-	}
-
-	public void setDexterity(int dexterity) {
-		attributes.setDexterity(dexterity);
 	}
 
 	public int getConstitution() {
 		return attributes.getConstitution();
 	}
 
-	public void setConstitution(int constitution) {
-		attributes.setConstitution(constitution);
-	}
-
 	public int getIntelligence() {
 		return attributes.getIntelligence();
-	}
-
-	public void setIntelligence(int intelligence) {
-		attributes.setIntelligence(intelligence);
 	}
 
 	public int getWisdom() {
 		return attributes.getWisdom();
 	}
 
-	public void setWisdom(int wisdom) {
-		attributes.setWisdom(wisdom);
-	}
-
 	public int getCharisma() {
 		return attributes.getCharisma();
-	}
-
-	public void setCharisma(int charisma) {
-		attributes.setCharisma(charisma);
 	}
 
 	public int getHitPoints() {
