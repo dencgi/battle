@@ -2,6 +2,12 @@ package dad.battle.character;
 
 import dad.battle.die.Die;
 
+/**
+ * Énumération modélisant la classe d'un personnage.
+ * 
+ * @author dencgi
+ *
+ */
 public enum Classs {
 
 	BARBARIAN(Die.D12),
@@ -16,6 +22,7 @@ public enum Classs {
 	SORCERER(Die.D4),
 	WIZARD(Die.D4);
 
+	// Dé de vie de chaque niveau.
 	private Die hitPointsDie;
 
 	private Classs(Die hitPointsDie) {

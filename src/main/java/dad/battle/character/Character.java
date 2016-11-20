@@ -1,5 +1,11 @@
 package dad.battle.character;
 
+/**
+ * Classe modélisant un personnage.
+ * 
+ * @author dencgi
+ *
+ */
 public class Character {
 
 	private static final int STARTING_LEVEL = 1;
@@ -12,6 +18,12 @@ public class Character {
 	private int level;
 	private Classs classs;
 
+	/**
+	 * Construit un personnage dont le nom a été passé en paramètre.
+	 * 
+	 * @param name
+	 *            Nom du personnage.
+	 */
 	public Character(String name) {
 		super();
 		this.name = name;
@@ -20,18 +32,38 @@ public class Character {
 		hitPoints = DEATH_HIT_POINTS;
 	}
 
+	/**
+	 * Indique si le personnage est mort.
+	 * 
+	 * @return Vrai si le personnage est mort.
+	 */
 	public boolean isDead() {
 		return hitPoints <= DEATH_HIT_POINTS;
 	}
 
+	/**
+	 * Indique si le personnage est mourrant.
+	 * 
+	 * @return Vrai si le personnage est mourrant.
+	 */
 	public boolean isDying() {
 		return hitPoints > DEATH_HIT_POINTS && hitPoints < DISABLED_HIT_POINTS;
 	}
 
+	/**
+	 * Indique si le personnage est hors de combat.
+	 * 
+	 * @return Vrai si le personnage est hors de combat.
+	 */
 	public boolean isDisabled() {
 		return hitPoints == DISABLED_HIT_POINTS;
 	}
 
+	/**
+	 * Indique si le personnage est en pleine possession de ses moyens.
+	 * 
+	 * @return Vrai si le personnage est en pleine possession de ses moyens.
+	 */
 	public boolean isAble() {
 		return hitPoints > DISABLED_HIT_POINTS;
 	}

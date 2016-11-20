@@ -2,6 +2,12 @@ package dad.battle.character;
 
 import dad.battle.die.Dice;
 
+/**
+ * Classe modélisant les attributs d'un personnage.
+ * 
+ * @author dencgi
+ *
+ */
 public class Attributes {
 
 	private static final Dice ABILITY_DICE = new Dice("3d6");
@@ -13,10 +19,17 @@ public class Attributes {
 	private int wisdom;
 	private int charisma;
 
+	/**
+	 * Construit des attributs sans valeur de départ. Les méthodes {@link #init()}, {@link #init(int, int, int, int, int, int)} ou les getter/setter doivent
+	 * être appelés pour initialiser complètement l'objet.
+	 */
 	public Attributes() {
 		super();
 	}
 
+	/**
+	 * Initialise aléatoirement les attributs.
+	 */
 	public void init() {
 		strength = ABILITY_DICE.roll();
 		dexterity = ABILITY_DICE.roll();
@@ -26,6 +39,22 @@ public class Attributes {
 		charisma = ABILITY_DICE.roll();
 	}
 
+	/**
+	 * Initialise les attributs avec les valeurs fournies.
+	 * 
+	 * @param strength
+	 *            Force
+	 * @param dexterity
+	 *            Dextérité
+	 * @param constitution
+	 *            Constitution
+	 * @param intelligence
+	 *            Intelligence
+	 * @param wisdom
+	 *            Sagesse
+	 * @param charisma
+	 *            Charisme
+	 */
 	public void init(int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma) {
 		this.strength = strength;
 		this.dexterity = dexterity;
@@ -35,6 +64,18 @@ public class Attributes {
 		this.charisma = charisma;
 	}
 
+	/**
+	 * Calcule le modificateur pour la valeur d'attribut passé en paramètre.
+	 * 
+	 * <ul>
+	 * <li>Pour un attribut de 10, le modificateur est 0.</li>
+	 * <li>Le modificateur augmente (ou diminue) de 1, tous les 2 points d'attribut.</li>
+	 * </ul>
+	 * 
+	 * @param ability
+	 *            Valeur de l'attribut dont on veut calculer le modificateur.
+	 * @return Le modificateur.
+	 */
 	private int calculateModifier(int ability) {
 		return ability % 2 == 0 ? (ability - 10) / 2 : (ability - 11) / 2;
 	}
