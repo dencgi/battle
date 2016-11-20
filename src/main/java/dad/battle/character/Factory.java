@@ -44,7 +44,7 @@ public class Factory {
 	public static Character getCharacter(String name, Classs classs, int... attributes) {
 		Character c = new Character(name);
 		c.setClasss(classs);
-		if (attributes == null || attributes.length != NUMBER_OF_ATTRIBUTES) {
+		if (attributes.length != NUMBER_OF_ATTRIBUTES) {
 			throw new IllegalArgumentException(NUMBER_OF_ATTRIBUTES + " attributes exactly");
 		}
 		c.getAttributes().setStrength(attributes[0]);

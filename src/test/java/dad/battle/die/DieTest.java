@@ -16,6 +16,12 @@ import org.junit.Test;
 
 import dad.battle.die.Die;
 
+/**
+ * Tests unitaires du dé.
+ * 
+ * @author dencgi
+ *
+ */
 public class DieTest {
 
 	private static final int VALEUR_MIN = 1;
@@ -26,21 +32,29 @@ public class DieTest {
 	private static final int D12 = 12;
 	private static final int D20 = 20;
 
+	/**
+	 * Teste le lancé du dé.
+	 */
 	@Test
 	public void testRoll() {
 		for (int i = 0; i < 100; ++i) {
 			Die d = Die.D6;
 			int result = d.roll();
-			assertThat("Mon chiffre n'est pas compris entre 1 et " + d.getNumberOfSides(), result, allOf(greaterThanOrEqualTo(VALEUR_MIN), lessThanOrEqualTo(d.getNumberOfSides())));
+			assertThat("Mon chiffre n'est pas compris entre 1 et " + d.getNumberOfSides(), result,
+					allOf(greaterThanOrEqualTo(VALEUR_MIN), lessThanOrEqualTo(d.getNumberOfSides())));
 		}
 
 		for (int i = 0; i < 100; ++i) {
 			Die d = Die.D20;
 			int result = d.roll();
-			assertThat("Mon chiffre n'est pas compris entre 1 et " + d.getNumberOfSides(), result, allOf(greaterThanOrEqualTo(VALEUR_MIN), lessThanOrEqualTo(d.getNumberOfSides())));
+			assertThat("Mon chiffre n'est pas compris entre 1 et " + d.getNumberOfSides(), result,
+					allOf(greaterThanOrEqualTo(VALEUR_MIN), lessThanOrEqualTo(d.getNumberOfSides())));
 		}
 	}
 
+	/**
+	 * Teste la répartition des lancés.
+	 */
 	@Test
 	public void testRandomRoll() {
 		Die d = Die.D6;
@@ -52,6 +66,9 @@ public class DieTest {
 		assertThat("Il n'y a qu'une seule valeur", rolls, not(hasSize(1)));
 	}
 
+	/**
+	 * Teste le nombre de faces du dé.
+	 */
 	@Test
 	public void testNumberOfSides() {
 		Die d = Die.D6;
@@ -59,7 +76,10 @@ public class DieTest {
 		d = Die.D20;
 		assertEquals("Le nombre de face n'est pas correct", D20, d.getNumberOfSides());
 	}
-	
+
+	/**
+	 * Teste touts les dés.
+	 */
 	@Test
 	public void testAllDice() {
 		assertEquals("Le nombre de face n'est pas correct", D4, Die.D4.getNumberOfSides());
@@ -69,9 +89,12 @@ public class DieTest {
 		assertEquals("Le nombre de face n'est pas correct", D12, Die.D12.getNumberOfSides());
 		assertEquals("Le nombre de face n'est pas correct", D20, Die.D20.getNumberOfSides());
 	}
-	
+
+	/**
+	 * Teste la fabrique de dés.
+	 */
 	@Test
-	public void testFabrique() {
+	public void testFactory() {
 		assertEquals("Le nombre de face n'est pas de 6", 6, Die.get(6).getNumberOfSides());
 		assertEquals("Le nombre de face n'est pas de 12", 12, Die.get(12).getNumberOfSides());
 		assertEquals("Le nombre de face n'est pas de 20", 20, Die.get(20).getNumberOfSides());

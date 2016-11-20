@@ -73,7 +73,7 @@ public class FactoryTest {
 	public void testChosenInitError() {
 		String nom = "toto";
 		Classs classs = Classs.MONK;
-		Character c = Factory.getCharacter(nom, classs, 6, 7, 8, 9, 10, 11, 12);
+		Factory.getCharacter(nom, classs, 6, 7, 8, 9, 10, 11, 12);
 	}
 
 	@Test

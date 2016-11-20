@@ -16,8 +16,17 @@ import org.junit.Test;
 
 import dad.battle.die.Dice;
 
+/**
+ * Tests unitaires sur une poignée de dés.
+ * 
+ * @author dencgi
+ *
+ */
 public class DiceTest {
 
+	/**
+	 * Teste des lancés sur 2d6.
+	 */
 	@Test
 	public void testRollD6() {
 		for (int i = 0; i < 100; i++) {
@@ -26,6 +35,9 @@ public class DiceTest {
 		}
 	}
 
+	/**
+	 * Teste des lancés sur 5d12.
+	 */
 	@Test
 	public void testRollD12() {
 		for (int i = 0; i < 100; i++) {
@@ -34,6 +46,9 @@ public class DiceTest {
 		}
 	}
 
+	/**
+	 * Teste la répartition des lancés de 2d6.
+	 */
 	@Test
 	public void testRandomRoll() {
 		Dice d = new Dice("2d6");
@@ -51,21 +66,57 @@ public class DiceTest {
 		assertThat("Il n'y a pas 11 valeurs", rolls, hasSize(11));
 	}
 
+	/**
+	 * Teste un format illégal.
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testIncorrectFormat1() {
 		new Dice("2d6*8");
 	}
 
+	/**
+	 * Teste un format illégal.
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testIncorrectFormat2() {
 		new Dice("2d6a");
 	}
 
+	/**
+	 * Teste un format légal.
+	 */
 	@Test
 	public void testCorrectFormat1() {
 		new Dice("2d6");
 	}
 
+	/**
+	 * Teste un format légal.
+	 */
+	@Test
+	public void testCorrectFormat2() {
+		new Dice("2d6+3d8");
+	}
+
+	/**
+	 * Teste un format légal.
+	 */
+	@Test
+	public void testCorrectFormat3() {
+		new Dice("1d8+1");
+	}
+
+	/**
+	 * Teste un format légal.
+	 */
+	@Test
+	public void testCorrectFormat4() {
+		new Dice("2d6+1d12+3");
+	}
+
+	/**
+	 * Teste le lancé de 2d6.
+	 */
 	@Test
 	public void testRollFormat1() {
 		Dice d = new Dice("2d6");
@@ -75,11 +126,9 @@ public class DiceTest {
 
 	}
 
-	@Test
-	public void testCorrectFormat2() {
-		new Dice("2d6+3d8");
-	}
-
+	/**
+	 * Teste le lancé de 2d6+3d8.
+	 */
 	@Test
 	public void testRollFormat2() {
 		Dice d = new Dice("2d6+3d8");
@@ -87,7 +136,10 @@ public class DiceTest {
 			assertThat("Le jeté n'est pas bon", d.roll(), allOf(greaterThanOrEqualTo(5), lessThanOrEqualTo(36)));
 		}
 	}
-	
+
+	/**
+	 * Teste la répartition de 2d6+3d8.
+	 */
 	@Test
 	public void testRollRepartitionFormat2() {
 		Dice d = new Dice("2d6+3d8");
@@ -98,11 +150,9 @@ public class DiceTest {
 		assertThat("Le jeté n'est pas bon", results, hasItems(8, 10, 20, 33));
 	}
 
-	@Test
-	public void testCorrectFormat3() {
-		new Dice("1d8+1");
-	}
-	
+	/**
+	 * Teste la répartition de 1d8+1.
+	 */
 	@Test
 	public void testRollRepartitionFormat3() {
 		Dice d = new Dice("1d8+1");
@@ -113,11 +163,9 @@ public class DiceTest {
 		assertThat("Le jeté n'est pas bon", results, containsInAnyOrder(2, 3, 4, 5, 6, 7, 8, 9));
 	}
 
-	@Test
-	public void testCorrectFormat4() {
-		new Dice("2d6+1d12+3");
-	}
-	
+	/**
+	 * Teste la répartition de 2d6+1d12+3.
+	 */
 	@Test
 	public void testRollRepartitionFormat4() {
 		Dice d = new Dice("2d6+1d12+3");
@@ -127,7 +175,10 @@ public class DiceTest {
 		}
 		assertThat("Le jeté n'est pas bon", results, hasItems(6, 10, 27));
 	}
-	
+
+	/**
+	 * Teste la répartition de 1d8-1.
+	 */
 	@Test
 	public void testRollRepartitionFormat5() {
 		Dice d = new Dice("1d8-1");
