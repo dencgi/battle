@@ -10,7 +10,6 @@ import dad.battle.attribute.Attributes;
  */
 public class Character {
 
-	private static final int STARTING_LEVEL = 1;
 	private static final int DEATH_HIT_POINTS = -10;
 	private static final int DISABLED_HIT_POINTS = 0;
 
@@ -21,16 +20,11 @@ public class Character {
 	private Classs classs;
 
 	/**
-	 * Construit un personnage dont le nom a été passé en paramètre.
-	 * 
-	 * @param name
-	 *            Nom du personnage.
+	 * Construit un personnage vide.
 	 */
-	public Character(String name) {
+	/* pp */ Character() {
 		super();
-		this.name = name;
 		this.attributes = new Attributes();
-		level = STARTING_LEVEL;
 		hitPoints = DEATH_HIT_POINTS;
 	}
 
@@ -82,6 +76,10 @@ public class Character {
 		return attributes;
 	}
 
+	/* pp */ void setAttributes(Attributes attributes) {
+		this.attributes = attributes;
+	}
+
 	public int getStrength() {
 		return attributes.getStrength();
 	}
@@ -116,6 +114,10 @@ public class Character {
 
 	public int getLevel() {
 		return level;
+	}
+
+	/* pp */ void setLevel(int level) {
+		this.level = level;
 	}
 
 	public Classs getClasss() {
