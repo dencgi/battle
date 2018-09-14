@@ -1,5 +1,7 @@
 package dad.battle.die;
 
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.Random;
 
 /**
@@ -32,20 +34,16 @@ public enum Die {
 	/**
 	 * Fournit le dé dont le nombre de faces est passé en paramètre.
 	 * 
-	 * @param numberOfSides
-	 *            Nombre de faces du dé.
-	 * @return Le dé correspondant au nombre de faces, ou null si aucun dé n'est trouvé.
+	 * @param numberOfSides Nombre de faces du dé.
+	 * @return Le dé correspondant au nombre de faces, ou null si aucun dé n'est
+	 *         trouvé.
 	 */
 	public static Die get(int numberOfSides) {
-		for (Die d : Die.values()) {
-			if (d.numberOfSides == numberOfSides) {
-				return d;
-			}
-		}
-		return null;
+		Optional<Die> found = Arrays.stream(Die.values()).filter(d -> d.numberOfSides == numberOfSides).findFirst();
+		return found.isPresent() ? found.get() : null;
 	}
 
-	public int getNumberOfSides() {
+	/* pp */ int getNumberOfSides() {
 		return numberOfSides;
 	}
 

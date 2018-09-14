@@ -25,10 +25,9 @@ public class Dice {
 	/**
 	 * Construit une poignée de dés.
 	 * 
-	 * @param hand
-	 *            La poignée de dés sous forme de chaîne de caractères. Le format attendu est \d+d\d+(\+\d+d\d+)*([+-]\d+)?
-	 * @throws IllegalArgumentException
-	 *             Si le format de la main n'est pas correct.
+	 * @param hand La poignée de dés sous forme de chaîne de caractères. Le format
+	 *             attendu est \d+d\d+(\+\d+d\d+)*([+-]\d+)?
+	 * @throws IllegalArgumentException Si le format de la main n'est pas correct.
 	 */
 	public Dice(String hand) {
 		// Vérification de la syntaxe globale.
@@ -63,10 +62,6 @@ public class Dice {
 	 * @return Le résultat du lancé.
 	 */
 	public int roll() {
-		int result = 0;
-		for (Die d : handOfDice) {
-			result += d.roll();
-		}
-		return result + modifier;
+		return handOfDice.stream().mapToInt(Die::roll).sum() + modifier;
 	}
 }
