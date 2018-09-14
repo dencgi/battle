@@ -1,5 +1,7 @@
 package dad.battle.character;
 
+import dad.battle.attribute.Attributes;
+
 /**
  * Classe modélisant un personnage.
  * 
