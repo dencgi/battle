@@ -1,11 +1,13 @@
 package dad.battle.attribute;
 
 public class Attribute {
+	
+	private static final int DEFAULT_VALUE = 9;
 
 	private int value;
 
 	public Attribute() {
-		value = 0;
+		value = DEFAULT_VALUE;
 	}
 
 	public Attribute(int value) {
