@@ -124,7 +124,7 @@ public class Character {
 		return classs;
 	}
 
-	public void setClasss(Classs classs) {
+	/* pp */ void setClasss(Classs classs) {
 		this.classs = classs;
 	}
 
