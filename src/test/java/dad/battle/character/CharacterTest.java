@@ -1,9 +1,11 @@
 package dad.battle.character;
 
+import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -21,12 +23,12 @@ public class CharacterTest {
 	@Test
 	public void testAttributes() {
 		Character c = new Character();
-		assertEquals("Les attributs ne sont pas initialisé", 0, c.getStrength());
-		assertEquals("Les attributs ne sont pas initialisé", 0, c.getDexterity());
-		assertEquals("Les attributs ne sont pas initialisé", 0, c.getConstitution());
-		assertEquals("Les attributs ne sont pas initialisé", 0, c.getIntelligence());
-		assertEquals("Les attributs ne sont pas initialisé", 0, c.getWisdom());
-		assertEquals("Les attributs ne sont pas initialisé", 0, c.getCharisma());
+		assertEquals("Les attributs ne sont pas initialisé", 9, c.getStrength());
+		assertEquals("Les attributs ne sont pas initialisé", 9, c.getDexterity());
+		assertEquals("Les attributs ne sont pas initialisé", 9, c.getConstitution());
+		assertEquals("Les attributs ne sont pas initialisé", 9, c.getIntelligence());
+		assertEquals("Les attributs ne sont pas initialisé", 9, c.getWisdom());
+		assertEquals("Les attributs ne sont pas initialisé", 9, c.getCharisma());
 	}
 
 	@Test
@@ -110,6 +112,19 @@ public class CharacterTest {
 		assertFalse("Le personnage est en pleine forme", c.isAble());
 		c.setHitPoints(3);
 		assertTrue("Le personnage n'est pas en pleine forme", c.isAble());
+	}
+
+	@Test
+	public void testAttack() {
+		final int startingHitPoints = 15;
+		
+		Character c = new Character();
+		c.getAttributes().setStrength(10);
+		Character o = new Character();
+		o.setHitPoints(startingHitPoints);
+
+		c.attack(o);
+		assertThat("L'adversaire n'a pas perdu de point de vie", o.getHitPoints(), lessThan(startingHitPoints));
 	}
 
 }

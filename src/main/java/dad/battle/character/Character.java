@@ -1,6 +1,7 @@
 package dad.battle.character;
 
 import dad.battle.attribute.Attributes;
+import dad.battle.die.Die;
 
 /**
  * Classe modélisant un personnage.
@@ -126,6 +127,12 @@ public class Character {
 
 	/* pp */ void setClasss(Classs classs) {
 		this.classs = classs;
+	}
+
+	public void attack(Character opponent) {
+		int damage = Die.D4.roll() + attributes.getStrengthModifier();
+		damage = damage < 0 ? 0 : damage;
+		opponent.setHitPoints(opponent.getHitPoints() - damage);
 	}
 
 }
